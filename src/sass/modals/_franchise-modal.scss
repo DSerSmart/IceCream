@@ -1,4 +1,5 @@
 .franchise-backdrop {
+  z-index: 200;
   position: fixed;
   top: 0;
   width: 100%;
@@ -38,15 +39,16 @@
   }
 
   @include tablet {
-    width: 550px;
-    min-height: 609px;
-    padding: 66px 30px 12px 30px;
+    width: 500px;
+    height: 515px;
+    padding: 60px 30px 10px 30px;
   }
 
-  //   @include desktop {
-  //     width: 528px;
-  //     min-height: 581px;
-  //   }
+  @include desktop {
+    width: 550px;
+    min-height: 670px;
+    padding: 76px 30px 10px 30px;
+  }
 }
 
 .franchise-modal__logo {
@@ -55,8 +57,20 @@
   @include tablet {
     display: inline-block;
     position: absolute;
-    top: 12px;
+    top: 10px;
     left: 175px;
+  }
+
+  @include desktop {
+    top: 16px;
+  }
+}
+
+.franchise-modal__img {
+  max-width: 85%;
+
+  @include desktop {
+    max-width: 100%;
   }
 }
 
@@ -68,21 +82,32 @@
   justify-content: center;
   align-items: center;
   background-color: $bg-modal-color;
-  width: 25px;
-  height: 25px;
+  color: $secondary-text-color;
+  width: 30px;
+  height: 30px;
   padding: 5px;
   border: 0px;
 
   @include mobile {
-    width: 30px;
-    height: 30px;
     padding: 6px;
+  }
+
+  @include tablet {
+    width: 40px;
+    height: 35px;
+  }
+
+  @include desktop {
+    width: 50px;
+    height: 50px;
   }
 }
 
 .franchise-modal__icon-close {
   fill: currentColor;
   transition: fill $transition;
+  width: 100%;
+  height: 100%;
 
   .franchise-modal__btn-close:hover &,
   .franchise-modal__btn-close:focus & {
@@ -108,19 +133,23 @@
   text-transform: uppercase;
 
   @include tablet {
-    font-size: 25px;
+    font-size: 24px;
     color: $secondary-text-color;
     margin-bottom: 8px;
+  }
+
+  @include desktop {
+    font-size: 25px;
   }
 }
 
 .franchise-modal__text {
   display: none;
 
-  @include tablet {
+  @include desktop {
     display: block;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.23;
     margin-bottom: 13px;
     text-align: center;
@@ -135,10 +164,10 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 9px;
+  }
 
-    // @include tablet {
-    //   margin-bottom: 20px;
-    // }
+  @include desktop {
+    margin-bottom: 13px;
   }
 }
 
@@ -152,6 +181,11 @@
 
   @include tablet {
     font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  @include desktop {
+    font-size: 16px;
   }
 }
 
@@ -177,6 +211,15 @@
   &:hover,
   &:focus {
     border-color: $btn-dark-hover-color;
+  }
+
+  @include tablet {
+    height: 38px;
+    padding: 9px 9px 9px 42px;
+  }
+
+  @include desktop {
+    font-size: 16px;
   }
 }
 
@@ -205,9 +248,16 @@
     border-color: $btn-dark-hover-color;
   }
 
-  //   @include mobile {
-  //     height: 122px;
-  //   }
+  @include tablet {
+    height: 46px;
+    padding: 6px 6px;
+  }
+
+  @include desktop {
+    font-size: 16px;
+    height: 68px;
+    padding: 8px 12px;
+  }
 
   &::placeholder {
     font-size: 12px;
@@ -222,9 +272,9 @@
   line-height: 1.71;
   letter-spacing: 0.03em;
 
-  //   @include desktop {
-  //     font-size: 14px;
-  //   }
+  @include desktop {
+    font-size: 16px;
+  }
 }
 
 .franchise-checkbox__label {
@@ -232,13 +282,6 @@
   align-items: center;
   width: 100%;
   color: $secondary-text-color;
-
-  //   @include desktop {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     color: var(--secondary-text-color);
-  //   }
 }
 
 .franchise-checkbox__agreement {
@@ -250,11 +293,7 @@
   border: 2px solid $btn-dark-hover-color;
   border-radius: 2px;
   margin-right: 7px;
-  transition: background-color $transition;
-
-  //   @include desktop {
-  //     display: flex;
-  //   }
+  transition: background-color $transition, border-color $transition;
 }
 
 .franchise-checkbox__icon {
@@ -268,10 +307,13 @@
   background-color: $btn-dark-hover-color;
   border: none;
 }
+.franchise-checkbox__input:hover
+  + .franchise-checkbox__label
+  .franchise-checkbox__agreement,
 .franchise-checkbox__input:focus
   + .franchise-checkbox__label
   .franchise-checkbox__agreement {
-  border-color: $btn-dark-hover-color;
+  border-color: $btn-bg-light-color;
 }
 
 .franchise-checkbox__input:checked
@@ -282,14 +324,20 @@
 
 .franchise-checkbox__link {
   color: $btn-dark-hover-color;
+  transition: color $transition;
+
+  &:hover,
+  &:focus {
+    color: $secondary-text-color;
+  }
 }
 
 .franchise-form__checkbox {
   margin-bottom: 9px;
 
-  //   @include mobile {
-  //     margin-bottom: 30px;
-  //   }
+  @include desktop {
+    margin-bottom: 12px;
+  }
 }
 
 .franchise-form__btn {
@@ -302,19 +350,25 @@
 }
 
 .franchise-modal__btn {
-  padding: 11px 11px;
+  display: block;
+  padding: 11px 0px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.31;
+  text-align: center;
+  cursor: pointer;
+  min-width: 162px;
+  margin-left: auto;
+  margin-right: auto;
   color: $third-text-color;
   background-color: $btn-bg-light-color;
   border: 1px solid $btn-bg-light-color;
   border-radius: 22px;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color $transition, border-color $transition;
 
   &:hover,
   &:focus {
+    border-color: $btn-light-hover-color;
     background-color: $btn-light-hover-color;
   }
-}
-
-.no-scroll {
-  overflow: hidden;
 }
